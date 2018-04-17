@@ -1,0 +1,19 @@
+extends layout
+block content
+   .row
+   h1 welcome To Edit Product Page <br><br>
+    .formHold 
+      h1.itemtitle Edit Item <br><br>
+        each product in indOne
+          p Look at #{product.name}
+          form(method="post")
+            fieldset
+            label(for="newname") Product Name:
+            input(name="newname" , type="text", value="#{product.name}")
+            label(for="newactivity") Sport: 
+            input(name="newactivity", type="text", value="#{product.activity}")
+            label(for="newprice") Item Price:
+            input(name="newprice", type="text", value="#{product.price}")
+            label(for="newimage") Image:
+            input(name="newimage", type="text", value="#{product.image}")
+            button.button(type="submit") Update #{product.name}
