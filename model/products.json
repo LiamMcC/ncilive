@@ -1,28 +1,16 @@
 [
     {
-        "name": "Polar M400",
-        "id": 1,
-        "activity": "Running",
-        "price": 199,
-        "image": "polarm400.png"
-    },
-    {
-        "name": "Garmin Edge",
-        "activity": "Bike Road",
-        "price": "179",
-        "image": "garminedge.png"
-    },
-    {
-        "name": "Polar Loop",
-        "id": 3,
+        "name": "Liams Productf",
+        "id": 11,
         "activity": "Swimming",
-        "price": 89,
-        "image": "polarloop.png"
+        "price": "5",
+        "image": "cycling.png"
     },
     {
-        "name": "Nci Liam",
-        "activity": "Cycling",
-        "price": "62",
-        "image": "cycling.jpg"
+        "name": "Liams delete",
+        "id": 11,
+        "activity": "Swimming",
+        "price": "5",
+        "image": "cycling.png"
     }
 ]

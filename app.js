@@ -168,6 +168,82 @@ app.post('/edit/:name', function(req, res){
 });
 
 
+// new delete
+app.get('/delete/:name', function(req, res) {
+  
+  var json = JSON.stringify(products); // this is to Convert it from an object to string with stringify for use below
+  
+  
+ fs.readFile('./model/products.json', 'utf8', function readFileCallback(err, data){
+    if (err){
+        console.log(err);
+    } else {
+      
+//var a = json.indexOf("whatif");
+var keytoFind = req.params.name; // position represents the location in the json array remember 0 is the first
+//console.log(a);
+      var str2 = products; // this changes the json to a variable str2
+//      var str = '[{ "label": "Month"}, { "label": "within"}, { "label": "From"}, { "label": "Where"}]';
+var data = str2; //this declares data = str2
+var index2 = data.map(function(d) { return d['name']; }).indexOf(keytoFind) // finds the position by nae taken from http://jsfiddle.net/hxfdZ/
+
+console.log("Liam the position is " + index2 + "    " + keytoFind)
+     
+  
+products.splice(index2 ,1); // deletes one item from position represented by index 2 from above
+       
+       
+// VERY VERY VERY VERY IMPORTANT  rooms.cars.splice(keytoFind,1, {name: "hello", id: 34, position: 16}); // this line updates the data VERY VERY VERY VERY IMPORTANT
+
+   json = JSON.stringify(products, null, 4); //convert it back to json
+    fs.writeFile('./model/products.json', json, 'utf8'); // write it back 
+  console.log("Product Deleted");
+    
+
+  
+}});
+
+
+
+res.redirect("/products");
+});
+
+
+
+
+// Delete products Function 
+app.get('/delete/:name', function(req, res){
+  // allow app to access file we want to modify
+  
+  fs.readFile('./model/products.json')
+  
+  var keytoFind = req.param.name; // go through products and find position based on the item name
+  
+  var index2 = products.map(function(d) {return d['name']}).indexOf(keytoFind) // finds position and declare position as variable index
+  
+  // log the position and the name of the product in the console
+  
+  console.log("One to telete is " + keytoFind)
+  
+  products.splice(index2, 1); // This delets one product only from the location where the name occurs
+  
+  json = JSON.stringify(products, null, 4)
+  fs.writeFile('./model/products.json', json, 'utf8'); // write the data back to our persistant data.
+  
+  console.log("It worked product deleted");
+  
+  res.redirect("/products")
+})
+
+
+
+// end delete function
+
+
+
+
+
+
 
 // This function gets the application up and running on the development server.
 app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
